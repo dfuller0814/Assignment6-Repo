@@ -1,0 +1,135 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+html{
+}
+body{
+    max-width: 100%;
+    font-size: 16px;
+    color: #3B3738;
+    background-color: #FDF3E7;
+    font-family: Arial,sans-serif;
+}
+select{
+    display: block;
+    position: relative;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1em;
+}
+.pageHeaderWrap{
+    display: block;
+    background-color: #C63D0F;
+    color: #FDF3E7;
+    height: 70px;
+    position: relative;
+    border-bottom: 2px solid #3B3738;
+    text-align: left;
+}
+.pageHeader{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    text-align: center;
+    top: 20px;
+    font-size: 1.1em;
+}
+.sectionClass{
+    overflow-x: scroll;
+    max-width: 100%;
+    top: 20px;
+    position: relative;
+    display: none;
+}
+.headerParagraphs{
+    position: relative;
+    text-align: center;
+    font-size: 1em;
+    top: 10px;
+}
+.inputTableWrap{
+    background-color: #D9D9D9;
+    border: 1px solid #3B3738;
+}
+.inputTable{
+    text-align: right;
+    display: block;
+    position: relative;
+    margin-top: 25px;
+    background-color: #4D81BD;
+    color: #FDF3E7;
+    font-size: 1.1em;
+    width: 100%;
+    height: auto;
+    border-top: 2px solid #3B3738;
+    padding: 10px;
+}
+input{
+    font-size: 0.9em;
+    width: 80%;
+    padding: 2px;
+    height: 20px;
+}
+.buttonWrap{
+    display: block;
+    background-color: #3B3738;
+    position: relative;
+    height: 70px;
+    top: 12%;
+    width: 100%;
+    text-align: center;
+}
+.inputBntSpan{
+    position: relative;
+    max-width: 100%;
+    top: 17px;
+    left: 13%;
+}
+button{
+    font-size: 0.9em;
+    width: 30%;
+    height: 35px;
+    border-radius: 2px;
+    border: 3px outset #E3DBD0;
+}
+button:hover{
+    font-weight: bold;
+    background-color: #C63D0F;
+    color: #FDF3E7;
+}
+button:active{
+    border: inset;
+}
+.customerTable{
+    display: table;
+    position: relative;
+    width: 100%;
+    border-collapse: collapse;
+    text-align: right;
+}
+.customerTable_caption{
+    background-color: #3B3738;
+    color: #FFF;
+    padding: 8px;
+}
+thead > tr > td{
+    border: 1px solid #3B3738;
+    background-color: #4D81BD;
+    color: #FFF;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    padding: 6px;
+}
+.customerTable_tbody td{
+    border: 1px solid #3B3738;
+    border-collapse: collapse;
+    background-color: #D7E9F7;
+    padding: 6px;
+}
+#orderHistoryTableWrap{
+    display: none;
+}
