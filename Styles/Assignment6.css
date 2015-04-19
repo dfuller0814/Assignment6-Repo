@@ -150,7 +150,7 @@ button:active{
 .resultIcon{
     position: absolute;
     margin-left: 10px;
-    top: 5px;
+    top: 10px;
     width: 1.5em;
     height: 1.5em;
     float: left;
@@ -172,7 +172,4 @@ button:active{
     border-collapse: collapse;
     background-color: #D7E9F7;
     padding: 6px;
-}
-#orderHistoryTableWrap{
-    display: none;
 }
