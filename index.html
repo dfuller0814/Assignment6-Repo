@@ -2,81 +2,177 @@
 <html>
 <head>
     <title>Assignment 5 - AJAX-JSON </title>
-    <link rel="stylesheet" type="text/css" media="(min-width: 801px)" href="Styles/Assignment5.css"/>
-    <link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="Styles/Assignment5-mobile.css"/>
+    <link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="Styles/Assignment6.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="JS/Assignment5.js" type="text/javascript"></script>
+    <script src="JS/Assignment6.js" type="text/javascript"></script>
 </head>
 
 <body>
     <!-- Header elements -->
     <section class="pageHeaderWrap">
         <header class="pageHeader">
-        <h1> Assignment 5 </h1>
+        <h1> Assignment 6 </h1>
     </header>
     </section>
     <!-- <><><><><>><><><><>><> -->
     <section>
     <p class="headerParagraphs">Select an option from the dropdown menu.</p>
         <select id="sectionDropdown">
-                <option id="none" name="none"></option>
-                <option id="customerListOpt" name="customerList"> Customer List </option>
-                <option id="orderHistoryOpt" name="orderHistory"> Order History </option>
-                <option id="customerDetailOpt" name="customerDetail"> Customer Detail </option>
+                <option id="newCust" value="newCust"> New Customer </option>
+                <option id="updateShip" value="shipInfo"> Update Shipping Info </option>
+                <option id="deleteCust" value="deleteCust"> Delete Customer </option>
         </select>
     </section>
     
-    <!-- Section 1 - Customer List -->
-    <section id="customerListSection" name="customerList" class="sectionClass">
+    <!-- Section 1 - Create New Customer -->
+    <section id="newCustomerSection" class="inputTableWrap" optionVal="newCust">
+        <div id="newCustErrorDiv" class="messageDiv">
+            <img id="newCustImg" alt="Message Icon" class="resultIcon" />
+            <p id="messageBoxNewCust" class="resultMessage"></p>
+        </div>
+        <table id="newCustomerInputTbl" class="inputTable">
+        <caption> New Customer Information </caption>
+            <tr>
+                <td>
+                    <label for="custIdInput">Customer Id:</label>
+                </td>
+                <td>
+                    <input id="custIdInput" type="text" class="inputText">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="custNameInput">Customer Name:</label>
+                </td>
+                <td>
+                    <input id="custNameInput" type="text" class="inputText">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="custCityInput">Customer City:</label>
+                </td>
+                <td>
+                    <input id="custCityInput" type="text" class="inputText">
+                </td>
+            </tr>
+        </table>
+        <div id="buttonWrap" class="buttonWrap">
+            <span id="inputBntSpan" class="inputBntSpan">
+                <button id="submitBtnNewCust"> SUBMIT </button>
+            </span>
+        </div>
     </section>
     
-    <!-- Section 2 - Order History, User Input -->
-    <section id="orderHistorySection" name="orderHistory" class="sectionClass">
-        <section id="inputTableWrap" class="inputTableWrap">
-            <header class="headerParagraphs">Please enter Customer Id to View Order History</header>
-            <table id="userInputTbl" class="inputTable">
+    <!-- Section 2 - Shipping Information -->
+    <section id="shippingSection" class="inputTableWrap" optionVal="shipInfo">
+            <div id="shipInfoErrorDiv" class="messageDiv">
+                <img id="shipInfoImg" src="Images/errorpic.png" alt="Error Icon" class="resultIcon" />
+                <p id="messageBoxShipInfo" class="resultMessage">This is an error</p>
+            </div>
+            <table id="shipInputTbl" class="inputTable">
+                <caption>Shipping Information</caption>
                 <tr>
                     <td>
-                        <label for="customerIdInput">Customer Id</label>
+                        <label for="orderNumInput">Order Number:</label>
                     </td>
                     <td>
-                        <input id="customerIdInput" type="text" class="inputText">
+                        <input id="orderNumInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipNameInput">Ship-To-Name:</label>
+                    </td>
+                    <td>
+                        <input id="shipNameInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipStreetInput">Ship-to-Street:</label>
+                    </td>
+                    <td>
+                        <input id="shipStreetInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipCityInput">Ship-to-City:</label>
+                    </td>
+                    <td>
+                        <input id="shipCityInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipPostalCode">Ship-to-Zip Code:</label>
+                    </td>
+                    <td>
+                        <input id="shipPostalCode" type="text" class="inputText">
+                    </td>
+                </tr>
+            </table>
+            <div id="buttonWrap" class="buttonWrap">
+            <span id="inputBntSpan" class="inputBntSpan">
+                <button id="submitBtnShipInfo"> SUBMIT </button>
+            </span>
+        </div>
+            
+    <!-- Section 3 - Delete Customer Info -->
+    <section id="deleteCustomerSection" class="inputTableWrap" optionVal="deleteCust">
+            <div id="delCustErrorDiv" class="messageDiv">
+                <img id="delCustImg" src="Images/errorpic.png" alt="Error Icon" class="resultIcon" />
+                <p id="messageBoxDelCust" class="resultMessage">This is an error</p>
+            </div>
+            <table id="deleteCustTbl" class="inputTable">
+                <caption>Shipping Information</caption>
+                <tr>
+                    <td>
+                        <label for="orderNumInput">Order Number:</label>
+                    </td>
+                    <td>
+                        <input id="orderNumInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipNameInput">Ship-To-Name:</label>
+                    </td>
+                    <td>
+                        <input id="shipNameInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipStreetInput">Ship-to-Street:</label>
+                    </td>
+                    <td>
+                        <input id="shipStreetInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipCityInput">Ship-to-City:</label>
+                    </td>
+                    <td>
+                        <input id="shipCityInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="shipPostalCode">Ship-to-Zip Code:</label>
+                    </td>
+                    <td>
+                        <input id="shipPostalCode" type="text" class="inputText">
                     </td>
                 </tr>
             </table>
             <div id="buttonWrap" class="buttonWrap">
                 <span id="inputBntSpan" class="inputBntSpan">
-                    <button id="submitBtn"> SUBMIT </button>
+                    <button id="submitBtnDelCust"> SUBMIT </button>
                 </span>
             </div>
         </section>
-        <section id="orderHistoryTableWrap" name="orderHistWrap" class="sectionClass">
-        </section>
-    </section>
-    
-    <!-- Customer Detail Section (Section 3) -->
-    <section id="customerDetailSection" name="customerDetail" class="sectionClass">
-        <section id="customerDetailTableWrap" class="inputTableWrap">
-            <header class="headerParagraphs">Please enter Customer Id to View Open Orders</header>
-            <table id="customerDetailInputTable" class="inputTable" style="background-color: #7E8F7C">
-                <tr>
-                    <td>
-                        <label for="detailCustIdInput">Customer Id</label>
-                    </td>
-                    <td>
-                        <input id="detailCustIdInput" type="text" class="inputText">
-                    </td>
-                </tr>
-            </table>
-            <div id="buttonWrap" class="buttonWrap">
-                <span id="inputBntSpan" class="inputBntSpan">
-                    <button id="submitBtnOpen"> SUBMIT </button>
-                </span>
-            </div>
-        </section>
-        <section id="customerDetailTableSection">
-        </section>
-    </section>
-
 </body>
 </html>

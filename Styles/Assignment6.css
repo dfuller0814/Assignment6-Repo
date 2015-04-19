@@ -19,6 +19,42 @@ select{
     margin-right: auto;
     font-size: 1.1em;
 }
+input{
+    font-size: 14px;
+    width: 80%;
+    padding: 2px;
+    height: 20px;
+}
+caption{
+    border: 1px solid #3B3738;  
+    color: #3B3738;
+    background-color: #D9D9D9;
+    padding: 12px;
+}
+thead > tr > td{
+    border: 1px solid #3B3738;
+    background-color: #4D81BD;
+    color: #FFF;
+    text-align: center;
+    white-space: nowrap;
+    font-weight: bold;
+    padding: 6px;
+}
+button{
+    font-size: 0.9em;
+    width: 105px;
+    height: 30px;
+    border-radius: 2px;
+    border: 3px outset #E3DBD0;
+}
+button:hover{
+    font-weight: bold;
+    background-color: #C63D0F;
+    color: #FDF3E7;
+}
+button:active{
+    border: inset;
+}
 .pageHeaderWrap{
     display: block;
     background-color: #C63D0F;
@@ -51,57 +87,73 @@ select{
     top: 10px;
 }
 .inputTableWrap{
-    background-color: #D9D9D9;
-    border: 1px solid #3B3738;
+    display: none;
+    position: relative;
+    top: 25px;
 }
 .inputTable{
     text-align: right;
-    display: block;
+    display: table;
     position: relative;
     margin-top: 25px;
     background-color: #4D81BD;
     color: #FDF3E7;
-    font-size: 1.1em;
+    font-size: 16px;
+    top: -20px;
     width: 100%;
-    height: auto;
+    border-spacing: 3px;
     border-top: 2px solid #3B3738;
-    padding: 10px;
-}
-input{
-    font-size: 0.9em;
-    width: 80%;
-    padding: 2px;
-    height: 20px;
+    padding: 8px;
 }
 .buttonWrap{
-    display: block;
+    display: inline-block;
     background-color: #3B3738;
     position: relative;
-    height: 70px;
-    top: 12%;
+    height: 50px;
+    top: -20px;
     width: 100%;
     text-align: center;
 }
 .inputBntSpan{
     position: relative;
     max-width: 100%;
-    top: 17px;
-    left: 13%;
+    top: 10px;
+    margin-right: 5px;
+    left: 27%;
 }
-button{
+.messageDiv{
+    position: relative;
+    text-align: left;
+    border: 1px solid;
+    margin: 0px;
+    top: -10px;
+    padding: 8px;
+    display: none;
+    max-width: 100%;
+}
+.messageDiv_error{
+    color: #D8000C;
+    background-color: #FFBABA;
+}
+.messageDiv_success{
+    color: #4F8A10;
+    background-color: #DFF2BF;
+}
+.resultMessage{
+    position: relative;
+    left: 40px;
+    max-width: 87%;
+    word-wrap: break-word;
     font-size: 0.9em;
-    width: 30%;
-    height: 35px;
-    border-radius: 2px;
-    border: 3px outset #E3DBD0;
+    margin: 5px;
 }
-button:hover{
-    font-weight: bold;
-    background-color: #C63D0F;
-    color: #FDF3E7;
-}
-button:active{
-    border: inset;
+.resultIcon{
+    position: absolute;
+    margin-left: 10px;
+    top: 5px;
+    width: 1.5em;
+    height: 1.5em;
+    float: left;
 }
 .customerTable{
     display: table;
@@ -114,15 +166,6 @@ button:active{
     background-color: #3B3738;
     color: #FFF;
     padding: 8px;
-}
-thead > tr > td{
-    border: 1px solid #3B3738;
-    background-color: #4D81BD;
-    color: #FFF;
-    text-align: center;
-    white-space: nowrap;
-    font-weight: bold;
-    padding: 6px;
 }
 .customerTable_tbody td{
     border: 1px solid #3B3738;
