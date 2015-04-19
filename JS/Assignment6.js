@@ -4,16 +4,11 @@ $(document).ready(function(){
 // ----- Show and hide sections selected in the dropdown list ------
     $("#sectionDropdown").change(function(){
 	var selectedOption = $("#sectionDropdown option:selected").val();
+	
 	hideSections();
 	
-	if (selectedOption == "allCust") {
-	    console.log("The table Javascript method will be called");
-	    //Call Javascript method in another .js file to build the table and then call the AJAX method I have here to get the All Customer list.
-	}
+	$("section[optionVal=" + selectedOption + "]").fadeIn();
 	
-	else{
-	    $("section[optionVal=" + selectedOption + "]").fadeIn();
-	}
 	
 	
     });
@@ -68,8 +63,35 @@ $(document).ready(function(){
 	    var customerId = $("#custIdDelInput").val();
 	    var serviceName = "deleteCustomer";
 	    
-	    //Submit request to server
-	    sendRequest("GET",true,serviceName,customerId);
+	    //Check if Customer Id is Populated
+	    if (customerId == "") {
+		$("section[optionVal]:visible > div.messageDiv > img.resultIcon").attr("src", "Images/errorpic.png");
+		$("section[optionVal]:visible > div.messageDiv").each(function(){
+		    if ($(this).hasClass("messageDiv_success")) {
+			$(this).removeClass("messageDiv_success").addClass("messageDiv_error");
+		    }
+		    else{
+			$(this).addClass("messageDiv_error");
+		    }
+
+		
+		
+		    $("section[optionVal]:visible > div.messageDiv > p.resultMessage").html("Operation Failed: " + "<br/>" + "<br/>" +
+											"Customer Id is a Required Field. Please Enter a Valid Customer Id and Click <b>Submit</b> again");
+		
+		    $(this).fadeIn();
+		
+		});
+	    }
+	    
+	    //Once receiving confirmation from the user, submit the request
+	    else{
+		//Submit request to server
+		var confirmation = window.confirm("Once a Customer is deleted, that customer cannot be recovered. Are you sure you want to delete this customer?");
+		if (confirmation == true) {
+		    sendRequest("GET",true,serviceName,customerId);
+		}
+	    }
     });
     
 
@@ -79,7 +101,19 @@ $(document).ready(function(){
 // ------ User Clicks the Clear Button ------------------------
     //Code for clicking the clear button
     $("button[customName='clear']").click(function(){
+	
 	//Clear the innerHTML text of all input fields and the error message div
+	$("section[optionVal]:visible > table.inputTable > tbody > tr > td > input").each(function(){
+	    $(this).val("");
+	});
+	
+	/* Clear Error Message Div */
+	//Check if the Error Div is displayed
+	$("section[optionVal]:visible > div.messageDiv").filter(":visible").each(function(){
+	    $(this).slideToggle("fast");
+	});
+	    
+	
     });
     
 
@@ -98,17 +132,21 @@ $(document).ready(function(){
 
 // ************************* Functions to call *************************
 
-// Hide all input sections
+
+// ---------------------- Hide all input sections --------------------------------------------------------------
 function hideSections() {
 	var allSections = document.querySelectorAll("section[optionVal]");
-	$(allSections).each(function(){
-	    $(this).hide(); 
+	$("section[optionVal]:visible > div.messageDiv").each(function(){
+		$(this).hide();
 	});
-    }
+	$(allSections).each(function(){
+	    $(this).hide();
+	});	
+}
     
     
     
-// AJAX Request function
+// --------------------- AJAX Request function ------------------------------------------------------------------
 function sendRequest(method,async,serviceName,reqString) {
     console.log("Request method begun");
     var request = new XMLHttpRequest();
@@ -144,6 +182,10 @@ function sendRequest(method,async,serviceName,reqString) {
     
 }
 
+// -----------------------------------------------------------------------------------------------------------------
+
+
+// ---------------------------- Function to Check Server Response --------------------------------------------------
 
 function checkResult(jsonResult,serviceName) {
     
@@ -163,7 +205,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with success message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).text("Operation completed successfully");
+		    $(this).text("New Customer Created Successfully");
 		});
 		
 		//Display message box
@@ -185,7 +227,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with error message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).html("Operation Failed: " + "<br/>" + "<br/>" + jsonResult.Exception);
+		    $(this).html("Create Operation Failed: " + "<br/>" + "<br/>" + jsonResult.Exception);
 		});
 		
 		//Display message box
@@ -213,7 +255,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with success message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).text("Operation completed successfully");
+		    $(this).text("Shipping Address Updated Successfully");
 		});
 		
 		//Display message box
@@ -235,7 +277,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with error message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).html("Operation Failed: " + "<br/>" + "<br/>" + "Invalid Data String Sent to the Server");
+		    $(this).html("Update Failed: " + "<br/>" + "<br/>" + "Invalid Data String Sent to the Server");
 		});
 		
 		//Display message box
@@ -257,7 +299,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with error message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).html("Operation Failed: " + "<br/>" + "<br/>" + "O");
+		    $(this).html("Update Failed: " + "<br/>" + "<br/>" + "O");
 		});
 		
 		//Display message box
@@ -279,7 +321,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with error message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).html("Operation Failed: " + "<br/>" + "<br/>" + "Unspecified status code of 0 returned from the server");
+		    $(this).html("Update Failed: " + "<br/>" + "<br/>" + "Unspecified status code of 0 returned from the server");
 		});
 		
 		//Display message box
@@ -305,7 +347,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with success message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).text("Operation completed successfully");
+		    $(this).text("Customer Deleted Successfully");
 		});
 		
 		//Display message box
@@ -327,7 +369,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with error message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).html("Operation Failed: " + "<br/>" + "<br/>" + jsonResult.DeleteCustomerResult.Exception);
+		    $(this).html("Delete Failed: " + "<br/>" + "<br/>" + jsonResult.DeleteCustomerResult.Exception);
 		});
 		
 		//Display message box

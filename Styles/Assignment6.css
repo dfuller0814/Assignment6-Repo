@@ -135,6 +135,10 @@ button:active{
     color: #D8000C;
     background-color: #FFBABA;
 }
+.messageDiv_warning{
+    color: #9F6000;
+    background-color: #FEEFB3;
+}
 .messageDiv_success{
     color: #4F8A10;
     background-color: #DFF2BF;

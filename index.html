@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Assignment 5 - AJAX-JSON </title>
+    <title>Assignment 6 - AJAX-JSON </title>
     <link rel="stylesheet" type="text/css" media="(max-width: 800px)" href="Styles/Assignment6.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="JS/Assignment6.js" type="text/javascript"></script>
@@ -18,7 +18,6 @@
     <section>
     <p class="headerParagraphs">Select an option from the dropdown menu.</p>
         <select id="sectionDropdown">
-                <option id="allCust" value="allCust"> All Customers </option>
                 <option id="newCust" value="newCust"> New Customer </option>
                 <option id="shipInfo" value="shipInfo"> Update Shipping Info </option>
                 <option id="deleteCust" value="deleteCust"> Delete Customer </option>
@@ -33,34 +32,36 @@
         </div>
         <table id="newCustomerInputTbl" class="inputTable">
         <caption> New Customer Information </caption>
-            <tr>
-                <td>
-                    <label for="custIdInput">Customer Id:</label>
-                </td>
-                <td>
-                    <input id="custIdInput" type="text" class="inputText">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="custNameInput">Customer Name:</label>
-                </td>
-                <td>
-                    <input id="custNameInput" type="text" class="inputText">
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <label for="custCityInput">Customer City:</label>
-                </td>
-                <td>
-                    <input id="custCityInput" type="text" class="inputText">
-                </td>
-            </tr>
+            <tbody>
+                <tr>
+                    <td>
+                        <label for="custIdInput">Customer Id:</label>
+                    </td>
+                    <td>
+                        <input id="custIdInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="custNameInput">Customer Name:</label>
+                    </td>
+                    <td>
+                        <input id="custNameInput" type="text" class="inputText">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="custCityInput">Customer City:</label>
+                    </td>
+                    <td>
+                        <input id="custCityInput" type="text" class="inputText">
+                    </td>
+                </tr>
+            </tbody>
         </table>
         <div id="buttonWrap" class="buttonWrap">
             <span id="inputBntSpan" class="inputBntSpan">
-                <button customName="clear"> CLEAR </button>
+                <button id="newCustClear" customName="clear"> CLEAR </button>
                 <button id="submitBtnNewCust"> SUBMIT </button>
             </span>
         </div>
@@ -74,80 +75,82 @@
             </div>
             <table id="shipInputTbl" class="inputTable">
                 <caption>Shipping Information</caption>
-                <tr>
-                    <td>
-                        <label for="orderNumInput">Order Number:</label>
-                    </td>
-                    <td>
-                        <input id="orderNumInput" type="text" class="inputText">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shipNameInput">Ship-To-Name:</label>
-                    </td>
-                    <td>
-                        <input id="shipNameInput" type="text" class="inputText">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shipStreetInput">Ship-to-Street:</label>
-                    </td>
-                    <td>
-                        <input id="shipStreetInput" type="text" class="inputText">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shipCityInput">Ship-to-City:</label>
-                    </td>
-                    <td>
-                        <input id="shipCityInput" type="text" class="inputText">
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        <label for="shipPostalCode">Ship-to-Zip Code:</label>
-                    </td>
-                    <td>
-                        <input id="shipPostalCode" type="text" class="inputText">
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="orderNumInput">Order Number:</label>
+                        </td>
+                        <td>
+                            <input id="orderNumInput" type="text" class="inputText">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="shipNameInput">Ship-To-Name:</label>
+                        </td>
+                        <td>
+                            <input id="shipNameInput" type="text" class="inputText">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="shipStreetInput">Ship-to-Street:</label>
+                        </td>
+                        <td>
+                            <input id="shipStreetInput" type="text" class="inputText">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="shipCityInput">Ship-to-City:</label>
+                        </td>
+                        <td>
+                            <input id="shipCityInput" type="text" class="inputText">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label for="shipPostalCode">Ship-to-Zip Code:</label>
+                        </td>
+                        <td>
+                            <input id="shipPostalCode" type="text" class="inputText">
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <div id="buttonWrap" class="buttonWrap">
             <span id="inputBntSpan" class="inputBntSpan">
-                <button> CLEAR </button>
+                <button id="shipClear" customName="clear"> CLEAR </button>
                 <button id="submitBtnShipInfo"> SUBMIT </button>
             </span>
         </div>
     </section>
     
     <!-- Section 3 - Delete Customer Info -->
-    <section id="deleteCustomerSection" class="inputTableWrap" optionVal="deleteCust" style="display: block">
+    <section id="deleteCustomerSection" class="inputTableWrap" optionVal="deleteCust">
             <div id="delCustErrorDiv" class="messageDiv">
                 <img id="delCustImg" alt="Error Icon" class="resultIcon" />
                 <p id="messageBoxDelCust" class="resultMessage"></p>
             </div>
             <table id="deleteCustTbl" class="inputTable">
                 <caption>Specify Customer to Delete</caption>
-                <tr>
-                    <td>
-                        <label for="custIdDelInput">Customer Id:</label>
-                    </td>
-                    <td>
-                        <input id="custIdDelInput" type="text" class="inputText" />
-                    </td>
-                </tr>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label for="custIdDelInput">Customer Id:</label>
+                        </td>
+                        <td>
+                            <input id="custIdDelInput" type="text" class="inputText">
+                        </td>
+                    </tr>
+                </tbody>
             </table>
             <div id="buttonWrap" class="buttonWrap">
                 <span id="inputBntSpan" class="inputBntSpan">
-                    <button> CLEAR </button>
+                    <button id="delCustClear" customName="clear"> CLEAR </button>
                     <button id="submitBtnDelCust"> SUBMIT </button>
                 </span>
             </div>
     </section>
-    <!-- Section 4 - All Customers Section -->
-    <section id="allCustomerSection" class="inputTableWrap" optionVal="allCust"></section>
 </body>
 </html>
