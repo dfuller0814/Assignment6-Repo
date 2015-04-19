@@ -7,7 +7,7 @@ $(document).ready(function(){
 	
 	hideSections();
 	
-	$("section[optionVal=" + selectedOption + "]").fadeIn();
+	$("section[optionVal=" + selectedOption + "]").show();
 	
 	
 	
@@ -79,7 +79,7 @@ $(document).ready(function(){
 		    $("section[optionVal]:visible > div.messageDiv > p.resultMessage").html("Operation Failed: " + "<br/>" + "<br/>" +
 											"Customer Id is a Required Field. Please Enter a Valid Customer Id and Click <b>Submit</b> again");
 		
-		    $(this).fadeIn();
+		    $(this).show();
 		
 		});
 	    }
@@ -209,7 +209,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
 	
@@ -231,7 +231,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
     }
@@ -259,7 +259,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
     
@@ -281,7 +281,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
     
@@ -303,7 +303,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
 	
@@ -325,7 +325,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
     }
@@ -351,7 +351,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
 	
@@ -373,7 +373,7 @@ function checkResult(jsonResult,serviceName) {
 		});
 		
 		//Display message box
-		$(this).fadeIn("fast");
+		$(this).show("fast");
 	    });
 	}
     }
