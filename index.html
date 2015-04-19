@@ -18,8 +18,9 @@
     <section>
     <p class="headerParagraphs">Select an option from the dropdown menu.</p>
         <select id="sectionDropdown">
+                <option id="allCust" value="allCust"> All Customers </option>
                 <option id="newCust" value="newCust"> New Customer </option>
-                <option id="updateShip" value="shipInfo"> Update Shipping Info </option>
+                <option id="shipInfo" value="shipInfo"> Update Shipping Info </option>
                 <option id="deleteCust" value="deleteCust"> Delete Customer </option>
         </select>
     </section>
@@ -59,6 +60,7 @@
         </table>
         <div id="buttonWrap" class="buttonWrap">
             <span id="inputBntSpan" class="inputBntSpan">
+                <button customName="clear"> CLEAR </button>
                 <button id="submitBtnNewCust"> SUBMIT </button>
             </span>
         </div>
@@ -115,12 +117,14 @@
             </table>
             <div id="buttonWrap" class="buttonWrap">
             <span id="inputBntSpan" class="inputBntSpan">
+                <button> CLEAR </button>
                 <button id="submitBtnShipInfo"> SUBMIT </button>
             </span>
         </div>
-            
+    </section>
+    
     <!-- Section 3 - Delete Customer Info -->
-    <section id="deleteCustomerSection" class="inputTableWrap" optionVal="deleteCust">
+    <section id="deleteCustomerSection" class="inputTableWrap" optionVal="deleteCust" style="display: block">
             <div id="delCustErrorDiv" class="messageDiv">
                 <img id="delCustImg" alt="Error Icon" class="resultIcon" />
                 <p id="messageBoxDelCust" class="resultMessage"></p>
@@ -132,15 +136,18 @@
                         <label for="custIdDelInput">Customer Id:</label>
                     </td>
                     <td>
-                        <input id="custIdDelInput" type="text" class="inputText">
+                        <input id="custIdDelInput" type="text" class="inputText" />
                     </td>
                 </tr>
             </table>
             <div id="buttonWrap" class="buttonWrap">
                 <span id="inputBntSpan" class="inputBntSpan">
+                    <button> CLEAR </button>
                     <button id="submitBtnDelCust"> SUBMIT </button>
                 </span>
             </div>
-        </section>
+    </section>
+    <!-- Section 4 - All Customers Section -->
+    <section id="allCustomerSection" class="inputTableWrap" optionVal="allCust"></section>
 </body>
 </html>
