@@ -19,15 +19,37 @@ $(document).ready(function(){
 
 // ------ User Clicks Submit in New Customer Section ------------------------
     $("#submitBtnNewCust").click(function(){
-	    var customerId = $("#custIdInput").val();
+	    var customerId = $("#custIdInput").val().replace(/\s+/g,"");
 	    var custName = $("#custNameInput").val();
 	    var custCity = $("#custCityInput").val();
 	    var serviceName = "CreateCustomer";
-	    //Build request string from user input
-	    var requestString = '{"CustomerID":"' + customerId + '","CompanyName":"' + custName + '","City":"' + custCity + '"}';
-	    console.log("String submitted " + requestString);
-	    //Submit request to server
-	    sendRequest("POST",true,serviceName,requestString);
+	    
+	    if (customerId.length < 5 || customerId.length > 5) {
+		$("section[optionVal]:visible > div.messageDiv > img.resultIcon").attr("src", "Images/errorpic.png");
+		$("section[optionVal]:visible > div.messageDiv").each(function(){
+		    if ($(this).hasClass("messageDiv_success")) {
+			$(this).removeClass("messageDiv_success").addClass("messageDiv_error");
+		    }
+		    else{
+			$(this).addClass("messageDiv_error");
+		    }
+		
+		
+		    $("section[optionVal]:visible > div.messageDiv > p.resultMessage").html("Input Validation Error: " + "<br/>" + "<br/>" +
+											"Customer Id Must be Exactly 5 Digits. Enter a Valid Customer Id and Click <b>Submit</b> again");
+		
+		    $(this).show("fast");
+		});
+	    }
+	    
+	    else{
+		//Build request string from user input
+		var requestString = '{"CustomerID":"' + customerId + '","CompanyName":"' + custName + '","City":"' + custCity + '"}';
+		console.log("String submitted " + requestString);
+		//Submit request to server
+		sendRequest("POST",true,serviceName,requestString);	
+	    }
+	    
     });
     
 
@@ -45,13 +67,35 @@ $(document).ready(function(){
 	    var shipPostal = document.getElementById("shipPostalCode").value;
 	    var serviceName = "updateOrderAddress";
 	    
-	    //Build request string from user input
-	    var requestString = '{"OrderID":"' + orderNum + '","ShipName":"' + shipName + '","ShipCity":"' + shipCity + '","ShipPostcode":"' + shipPostal +
-	    '","ShipAddress":"' + shipStreet + '"}';
-	    console.log("String submitted: " + requestString);
+	    if (orderNum == "") {
+		$("section[optionVal]:visible > div.messageDiv > img.resultIcon").attr("src", "Images/errorpic.png");
+		$("section[optionVal]:visible > div.messageDiv").each(function(){
+		    if ($(this).hasClass("messageDiv_success")) {
+			$(this).removeClass("messageDiv_success").addClass("messageDiv_error");
+		    }
+		    else{
+			$(this).addClass("messageDiv_error");
+		    }
+		
+		
+		    $("section[optionVal]:visible > div.messageDiv > p.resultMessage").html("Input Validation Error: " + "<br/>" + "<br/>" +
+											"Order Number is a Required Field. Please Enter a Valid Order Number and Click <b>Submit</b> again");
+		
+		    $(this).show("fast");
+		
+		});
+	    }
 	    
-	    //Submit request to server
-	    sendRequest("POST",true,serviceName,requestString);
+	    else{
+		//Build request string from user input
+		var requestString = '{"OrderID":"' + orderNum + '","ShipName":"' + shipName + '","ShipCity":"' + shipCity + '","ShipPostcode":"' + shipPostal +
+		'","ShipAddress":"' + shipStreet + '"}';
+		console.log("String submitted: " + requestString);
+		
+		//Submit request to server
+		sendRequest("POST",true,serviceName,requestString);
+	    }
+	    
     });
     
 
@@ -73,13 +117,12 @@ $(document).ready(function(){
 		    else{
 			$(this).addClass("messageDiv_error");
 		    }
-
 		
 		
-		    $("section[optionVal]:visible > div.messageDiv > p.resultMessage").html("Operation Failed: " + "<br/>" + "<br/>" +
+		    $("section[optionVal]:visible > div.messageDiv > p.resultMessage").html("Input Validation Error: " + "<br/>" + "<br/>" +
 											"Customer Id is a Required Field. Please Enter a Valid Customer Id and Click <b>Submit</b> again");
 		
-		    $(this).show();
+		    $(this).show("fast");
 		
 		});
 	    }
@@ -299,7 +342,7 @@ function checkResult(jsonResult,serviceName) {
 		
 		//Populate message box with error message
 		$("section[optionVal]:visible > div.messageDiv > p.resultMessage").each(function(){
-		    $(this).html("Update Failed: " + "<br/>" + "<br/>" + "O");
+		    $(this).html("Update Failed: " + "<br/>" + "<br/>" + "The Specified Order ID Could Not Be Found");
 		});
 		
 		//Display message box
